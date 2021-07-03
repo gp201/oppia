@@ -1,3 +1,4 @@
+/* eslint-disable oppia/no-multiline-disable */
 /* eslint-disable oppia/no-test-blockers */
 // Copyright 2021 The Oppia Authors. All Rights Reserved.
 //

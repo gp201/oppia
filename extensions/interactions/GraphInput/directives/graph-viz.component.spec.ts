@@ -1572,7 +1572,7 @@ describe('GraphVizComponent', () => {
       ]);
 
       component.onMouseupDocument();
-      tick(5);
+      tick(10);
 
       expect(component.tryAddEdge).toHaveBeenCalledWith(0, 2);
       expect(component.graph.edges).toEqual([
@@ -1747,7 +1747,7 @@ describe('GraphVizComponent', () => {
       let evt = new MouseEvent('mouseup', {});
 
       document.dispatchEvent(evt);
-      tick(10);
+      tick();
 
       expect(clearTimeout).toHaveBeenCalled();
       expect(setTimeout).toHaveBeenCalledWith(jasmine.any(Function), 5);

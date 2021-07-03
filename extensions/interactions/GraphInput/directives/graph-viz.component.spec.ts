@@ -18,7 +18,7 @@
  * @fileoverview Unit tests for the graph-viz.
  */
 
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { GraphVizComponent } from './graph-viz.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MockTranslatePipe } from 'tests/unit-test-utils';
@@ -1747,7 +1747,7 @@ describe('GraphVizComponent', () => {
       let evt = new MouseEvent('mouseup', {});
 
       document.dispatchEvent(evt);
-      tick();
+      flush();
 
       expect(clearTimeout).toHaveBeenCalled();
       expect(setTimeout).toHaveBeenCalledWith(jasmine.any(Function), 5);

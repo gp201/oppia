@@ -2032,7 +2032,7 @@ describe('FilepathEditor', () => {
       expect(component.saveImage).toHaveBeenCalled();
       expect(component.data.mode).toBe(component.MODE_SAVED);
       done();
-    }, 150);
+    }, 1000);
   });
 
   it('should alert user if resampled gif file is not obtained when the user' +

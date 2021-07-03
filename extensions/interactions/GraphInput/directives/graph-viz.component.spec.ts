@@ -1,3 +1,4 @@
+/* eslint-disable oppia/no-test-blockers */
 // Copyright 2021 The Oppia Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +27,7 @@ import { PlayerPositionService } from 'pages/exploration-player-page/services/pl
 import { EventEmitter } from '@angular/core';
 import { FocusManagerService } from 'services/stateful/focus-manager.service';
 
-describe('GraphVizComponent', () => {
+fdescribe('GraphVizComponent', () => {
   let component: GraphVizComponent;
   let graphDetailService: GraphDetailService;
   let deviceInfoService: DeviceInfoService;
@@ -1570,7 +1571,7 @@ describe('GraphVizComponent', () => {
       ]);
 
       component.onMouseupDocument();
-      tick(10);
+      tick(5);
 
       expect(component.tryAddEdge).toHaveBeenCalledWith(0, 2);
       expect(component.graph.edges).toEqual([

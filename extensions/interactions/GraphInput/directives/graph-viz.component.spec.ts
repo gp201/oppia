@@ -28,7 +28,7 @@ import { PlayerPositionService } from 'pages/exploration-player-page/services/pl
 import { EventEmitter } from '@angular/core';
 import { FocusManagerService } from 'services/stateful/focus-manager.service';
 
-fdescribe('GraphVizComponent', () => {
+describe('GraphVizComponent', () => {
   let component: GraphVizComponent;
   let graphDetailService: GraphDetailService;
   let deviceInfoService: DeviceInfoService;

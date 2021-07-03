@@ -504,6 +504,7 @@ describe('FilepathEditor', () => {
     component.userIsResizingCropArea = true;
 
     window.dispatchEvent(new Event('mouseup'));
+    fixture.detectChanges();
 
     expect(component.userIsDraggingCropArea).toBe(false);
     expect(component.userIsResizingCropArea).toBe(false);

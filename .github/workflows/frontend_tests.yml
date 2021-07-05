@@ -27,5 +27,17 @@ jobs:
         run: python -m scripts.install_third_party_libs
       - name: Suppress ENOSPC error from chokidar file watcher. See https://stackoverflow.com/a/32600959.
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-      - name: Run frontend tests
-        run: PYTHONIOENCODING=utf-8 python -m scripts.run_frontend_tests --run_minified_tests --skip_install --check_coverage
+      - name: Run frontend tests-1
+        run: for run in {1..20}; do PYTHONIOENCODING=utf-8 python -m scripts.run_frontend_tests --run_minified_tests --skip_install --check_coverage; done
+      - name: Uploading karma coverage report as Artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: karma-coverage-report
+          path: /home/runner/work/oppia/karma_coverage_reports/extensions/objects/templates/filepath-editor.component.ts.html
+      - name: Uploading karma coverage report as Artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: karma-coverage-report
+          path: /home/runner/work/oppia/karma_coverage_reports/extensions/interactions/GraphInput/directives/graph-viz.component.ts.html

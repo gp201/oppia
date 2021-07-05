@@ -4,10 +4,12 @@ on:
     branches:
       - develop
       - release-*
+      - fe*
   pull_request:
     branches:
       - develop
       - release-*
+      - fe*
 
 jobs:
   frontend:

@@ -184,28 +184,6 @@ describe('Topic editor state service', () => {
       jasmine.SpyObj<AlertsService>;
     topicObjectFactory = TestBed.inject(TopicObjectFactory);
 
-    groupedSkillSummaries = {
-      current: [{
-        id: 'skillId1',
-        description: 'description1',
-        language_code: 'en',
-        version: 1,
-        misconception_count: 3,
-        worked_examples_count: 3,
-        skill_model_created_on: 1593138898626.193,
-        skill_model_last_updated: 1593138898626.193
-      }],
-      others: [{
-        id: 'skillId2',
-        description: 'description2',
-        language_code: 'en',
-        version: 1,
-        misconception_count: 3,
-        worked_examples_count: 3,
-        skill_model_created_on: 1593138898626.193,
-        skill_model_last_updated: 1593138898626.193
-      }]
-    };
     topicDict = {
       id: 'topic_id',
       name: 'topic_name',

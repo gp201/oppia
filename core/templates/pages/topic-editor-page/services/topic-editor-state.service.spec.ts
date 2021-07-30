@@ -39,7 +39,6 @@ describe('Topic editor state service', () => {
 
   let skillCreationIsAllowed: boolean = true;
   let skillQuestionCountDict = {};
-  let groupedSkillSummaries = {};
   let topicDict: TopicBackendDict;
   let storySummaryBackendDict: StorySummaryBackendDict;
   let subtopicPage: SubtopicPageBackendDict;

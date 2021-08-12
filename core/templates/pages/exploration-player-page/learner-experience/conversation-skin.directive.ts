@@ -1234,6 +1234,10 @@ angular.module('oppia').directive('conversationSkin', [
               }
               var tutorCardBottom = (
                 tutorCard.offset().top + tutorCard.outerHeight());
+              console.error('🚀gp201 ~ $timeout ~ tutorCardBottom',
+                tutorCardBottom);
+              console.error('🚀gp201 ~ $ ~ $(window).height()',
+                $(window).height());
               if ($(window).scrollTop() +
                     $(window).height() < tutorCardBottom) {
                 $('html, body').animate({

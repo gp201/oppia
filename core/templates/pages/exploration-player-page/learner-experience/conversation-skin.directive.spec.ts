@@ -1,3 +1,4 @@
+/* eslint-disable oppia/no-test-blockers */
 // Copyright 2021 The Oppia Authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -63,7 +64,7 @@ import { I18nLanguageCodeService } from 'services/i18n-language-code.service';
 import { ExplorationRecommendationsService } from '../services/exploration-recommendations.service';
 import { GuestCollectionProgressService } from 'domain/collection/guest-collection-progress.service';
 
-describe('Conversation skin directive', function() {
+fdescribe('Conversation skin directive', function() {
   let $scope = null;
   let ctrl = null;
   let $rootScope = null;

@@ -671,6 +671,8 @@ describe('Conversation skin directive', function() {
     angular.element(document.body).append(element);
     $compile(element)($scope);
     $rootScope.$digest();
+
+    spyOn($.fn, 'animate').and.stub();
   }));
 
   afterEach(() => {
@@ -1961,7 +1963,7 @@ describe('Conversation skin directive', function() {
       expect(helperCardSpy).toHaveBeenCalled();
     });
 
-    xit('should mark exploration as completed if the ' +
+    it('should mark exploration as completed if the ' +
       'current card is last card', function() {
       sampleCard = StateCard.createNewCard(
         'State 1', '<p>Content</p>', '<interaction></interaction>',

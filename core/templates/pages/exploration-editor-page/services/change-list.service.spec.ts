@@ -117,7 +117,7 @@ describe('Change List Service when changes are mergable', () => {
   let mockExplorationDataService = null;
   let mockEventEmitter = new EventEmitter();
 
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     mockWindowRef = new MockWindowRef();
     mockExplorationDataService = new MockExplorationDataService1();
     TestBed.configureTestingModule({
@@ -139,17 +139,13 @@ describe('Change List Service when changes are mergable', () => {
         }
       ]
     });
+  });
 
-    tick(200);
-  }));
-
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     changeListService = TestBed.inject(ChangeListService);
     internetConnectivityService = TestBed.inject(InternetConnectivityService);
     autosaveInfoModalsService = TestBed.inject(AutosaveInfoModalsService);
     alertsService = TestBed.inject(AlertsService);
-
-    tick(200);
 
     spyOn(autosaveInfoModalsService, 'showVersionMismatchModal')
       .and.returnValue(null);
@@ -157,7 +153,7 @@ describe('Change List Service when changes are mergable', () => {
       .and.returnValue(null);
     alertsSpy = spyOn(alertsService, 'addWarning')
       .and.returnValue(null);
-  }));
+  });
 
   it('should set loading message when initialized', fakeAsync(() => {
     mockEventEmitter.emit('loadingMessage');
@@ -267,7 +263,7 @@ describe('Change List Service when changes are not mergable', () => {
   let alertsSpy = null;
   let mockExplorationDataService = null;
 
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     mockWindowRef = new MockWindowRef();
     mockExplorationDataService = new MockExplorationDataService2();
     TestBed.configureTestingModule({
@@ -283,16 +279,13 @@ describe('Change List Service when changes are not mergable', () => {
         }
       ]
     });
+  });
 
-    tick(200);
-  }));
-
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     changeListService = TestBed.inject(ChangeListService);
     autosaveInfoModalsService = TestBed.inject(AutosaveInfoModalsService);
     alertsService = TestBed.inject(AlertsService);
 
-    tick(200);
 
     spyOn(autosaveInfoModalsService, 'showVersionMismatchModal')
       .and.returnValue(null);
@@ -300,7 +293,7 @@ describe('Change List Service when changes are not mergable', () => {
       .and.returnValue(null);
     alertsSpy = spyOn(alertsService, 'addWarning')
       .and.returnValue(null);
-  }));
+  });
 
   it('should undo and save changes when calling \'undoLastChange\'',
     fakeAsync(() => {
@@ -338,7 +331,7 @@ describe('Change List Service when internet is available', () => {
   let mockExplorationDataService = null;
   let mockAutosaveInfoModalsService = null;
 
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     mockWindowRef = new MockWindowRef();
     mockExplorationDataService = new MockExplorationDataService3();
     mockAutosaveInfoModalsService = new MockAutosaveInfoModalsService();
@@ -368,18 +361,15 @@ describe('Change List Service when internet is available', () => {
         }
       ]
     });
-    tick(200);
-  }));
+  });
 
-  beforeEach(fakeAsync(() => {
+  beforeEach(() => {
     changeListService = TestBed.inject(ChangeListService);
     alertsService = TestBed.inject(AlertsService);
 
-    tick(200);
-
     alertsSpy = spyOn(alertsService, 'addWarning')
       .and.returnValue(null);
-  }));
+  });
 
   it('should undo and save changes when calling \'undoLastChange\'',
     fakeAsync(() => {

@@ -103,6 +103,7 @@ export class ChangeListService {
       internetAccessible => {
         if (internetAccessible && this.temporaryListOfChanges.length > 0) {
           for (let change of this.temporaryListOfChanges) {
+            console.error('ran1');
             this.addChange(change);
           }
           this.temporaryListOfChanges = [];

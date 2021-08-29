@@ -16,7 +16,7 @@
  * @fileoverview Tests for Change List Service.
  */
 
-import { TestBed, fakeAsync, flush } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ChangeListService } from './change-list.service';
 import { LoaderService } from 'services/loader.service';
@@ -140,7 +140,7 @@ describe('Change List Service when changes are mergable', () => {
       ]
     });
 
-    flush();
+    tick(203);
   }));
 
   beforeEach(fakeAsync(() => {
@@ -149,7 +149,7 @@ describe('Change List Service when changes are mergable', () => {
     autosaveInfoModalsService = TestBed.inject(AutosaveInfoModalsService);
     alertsService = TestBed.inject(AlertsService);
 
-    flush();
+    tick(203);
 
     spyOn(autosaveInfoModalsService, 'showVersionMismatchModal')
       .and.returnValue(null);
@@ -162,7 +162,7 @@ describe('Change List Service when changes are mergable', () => {
   it('should set loading message when initialized', fakeAsync(() => {
     mockEventEmitter.emit('loadingMessage');
 
-    flush();
+    tick(203);
 
     expect(changeListService.loadingMessage).toBe('loadingMessage');
   }));
@@ -176,7 +176,7 @@ describe('Change List Service when changes are mergable', () => {
       .and.callThrough();
 
     changeListService.deleteState('state');
-    flush();
+    tick(203);
 
     expect(saveSpy).toHaveBeenCalled();
   }));
@@ -191,7 +191,7 @@ describe('Change List Service when changes are mergable', () => {
     // Setting loading message.
     changeListService.loadingMessage = 'loadingMessage';
     changeListService.deleteState('state');
-    flush();
+    tick(203);
 
     expect(saveSpy).not.toHaveBeenCalled();
   }));
@@ -207,7 +207,7 @@ describe('Change List Service when changes are mergable', () => {
       .and.returnValue(false);
 
     changeListService.deleteState('state');
-    flush();
+    tick(203);
 
     expect(saveSpy).not.toHaveBeenCalled();
   }));
@@ -219,7 +219,7 @@ describe('Change List Service when changes are mergable', () => {
 
     changeListService.discardAllChanges();
 
-    flush();
+    tick(203);
 
     expect(discardSpy).toHaveBeenCalled();
   }));
@@ -228,7 +228,7 @@ describe('Change List Service when changes are mergable', () => {
     'an exploration with invalid property', fakeAsync(() => {
     changeListService.editExplorationProperty(
       'prop1', 'oldValue', 'newValue');
-    flush();
+    tick(203);
 
     expect(alertsSpy).toHaveBeenCalledWith(
       'Invalid exploration property: prop1');
@@ -238,7 +238,7 @@ describe('Change List Service when changes are mergable', () => {
     'an state with invalid property', fakeAsync(() => {
     changeListService.editStateProperty(
       'stateName', 'prop1', 'oldValue', 'newValue');
-    flush();
+    tick(203);
 
     expect(alertsSpy).toHaveBeenCalledWith(
       'Invalid state property: prop1');
@@ -247,12 +247,12 @@ describe('Change List Service when changes are mergable', () => {
   it('should check whether exploration locked for editing ' +
     'when calling \'isExplorationLockedForEditing\'', fakeAsync(() => {
     changeListService.explorationChangeList.length = 2;
-    flush();
+    tick(203);
     expect(changeListService.isExplorationLockedForEditing())
       .toBe(true);
 
     changeListService.explorationChangeList.length = 0;
-    flush();
+    tick(203);
     expect(changeListService.isExplorationLockedForEditing())
       .toBe(false);
   }));
@@ -284,7 +284,7 @@ describe('Change List Service when changes are not mergable', () => {
       ]
     });
 
-    flush();
+    tick(203);
   }));
 
   beforeEach(fakeAsync(() => {
@@ -292,7 +292,7 @@ describe('Change List Service when changes are not mergable', () => {
     autosaveInfoModalsService = TestBed.inject(AutosaveInfoModalsService);
     alertsService = TestBed.inject(AlertsService);
 
-    flush();
+    tick(203);
 
     spyOn(autosaveInfoModalsService, 'showVersionMismatchModal')
       .and.returnValue(null);
@@ -311,7 +311,7 @@ describe('Change List Service when changes are not mergable', () => {
 
       changeListService.undoLastChange();
 
-      flush();
+      tick(203);
 
       expect(saveSpy).toHaveBeenCalled();
     }));
@@ -321,7 +321,7 @@ describe('Change List Service when changes are not mergable', () => {
 
     changeListService.undoLastChange();
 
-    flush();
+    tick(203);
 
     expect(alertsSpy).toHaveBeenCalledWith(
       'There are no changes to undo.');
@@ -368,14 +368,14 @@ describe('Change List Service when internet is available', () => {
         }
       ]
     });
-    flush();
+    tick(203);
   }));
 
   beforeEach(fakeAsync(() => {
     changeListService = TestBed.inject(ChangeListService);
     alertsService = TestBed.inject(AlertsService);
 
-    flush();
+    tick(203);
 
     alertsSpy = spyOn(alertsService, 'addWarning')
       .and.returnValue(null);
@@ -395,7 +395,7 @@ describe('Change List Service when internet is available', () => {
       onInternetStateChangeEventEmitter.emit(true);
       changeListService.undoLastChange();
 
-      flush();
+      tick(203);
 
       expect(saveSpy).toHaveBeenCalled();
     }));
@@ -408,7 +408,7 @@ describe('Change List Service when internet is available', () => {
 
     changeListService.undoLastChange();
 
-    flush();
+    tick(203);
 
     expect(alertsSpy).toHaveBeenCalledWith(
       'There are no changes to undo.');

@@ -103,7 +103,7 @@ export class ChangeListService {
       internetAccessible => {
         if (internetAccessible && this.temporaryListOfChanges.length > 0) {
           for (let change of this.temporaryListOfChanges) {
-            console.error('ran1');
+            console.error('🚀gp201 ~ subscribe');
             this.addChange(change);
           }
           this.temporaryListOfChanges = [];
@@ -174,6 +174,7 @@ export class ChangeListService {
    */
 
   addState(stateName: string): void {
+    console.error('🚀gp201 ~ addState ~ addState');
     this.addChange({
       cmd: 'add_state',
       state_name: stateName
@@ -189,6 +190,7 @@ export class ChangeListService {
    */
 
   deleteState(stateName: string): void {
+    console.error('🚀gp201 ~ deleteState ~ deleteState');
     this.addChange({
       cmd: 'delete_state',
       state_name: stateName
@@ -219,6 +221,7 @@ export class ChangeListService {
         'Invalid exploration property: ' + backendName);
       return;
     }
+    console.error('🚀gp201 ~ editExplorationProperty');
     this.addChange({
       cmd: 'edit_exploration_property',
       new_value: angular.copy(newValue),
@@ -245,6 +248,7 @@ export class ChangeListService {
       this.alertsService.addWarning('Invalid state property: ' + backendName);
       return;
     }
+    console.error('🚀gp201 ~ editStateProperty');
     this.addChange({
       cmd: 'edit_state_property',
       new_value: angular.copy(newValue),
@@ -284,6 +288,7 @@ export class ChangeListService {
    * @param {string} oldStateName - The previous name of the state
    */
   renameState(newStateName: string, oldStateName: string): void {
+    console.error('🚀gp201 ~ renameState ~ renameState');
     this.addChange({
       cmd: 'rename_state',
       new_state_name: newStateName,
@@ -301,6 +306,7 @@ export class ChangeListService {
   // the contributor dashboard because such translation suggestions
   // undergo a manual review process where the reviewer will need to look
   // at the corresponding original content at the time of submission.
+    console.error('🚀gp201 ~ addWrittenTranslation');
     this.addChange({
       cmd: 'add_written_translation',
       content_id: contentId,
@@ -321,6 +327,8 @@ export class ChangeListService {
    * @param {string} stateName - The current state name.
    */
   markTranslationsAsNeedingUpdate(contentId: string, stateName: string): void {
+    console.error('🚀gp201 ~ markTranslationsAsNeedingUpdate ~ ' +
+      'markTranslationsAsNeedingUpdate');
     this.addChange({
       cmd: 'mark_written_translations_as_needing_update',
       content_id: contentId,

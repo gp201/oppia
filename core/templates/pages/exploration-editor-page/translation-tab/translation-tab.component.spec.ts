@@ -266,21 +266,25 @@ describe('Translation tab component', function() {
     });
 
   it('should load translation tab data when translation tab page is' +
-    ' refreshed', function() {
+    ' refreshed', fakeAsync(() => {
     spyOn(userExplorationPermissionsService, 'getPermissionsAsync').and
       .returnValue($q.resolve({
         canVoiceover: true
       }));
+    spyOn(contextService, 'getExplorationId');
+    spyOn(stateTutorialFirstTimeService, 'initTranslation');
 
     ctrl.$onInit();
     $scope.$apply();
 
     spyOn(loaderService, 'hideLoadingScreen');
     refreshTranslationTabEmitter.emit();
+    tick();
+    $scope.$apply();
 
     expect($scope.showTranslationTabSubDirectives).toBe(true);
     expect(loaderService.hideLoadingScreen).toHaveBeenCalled();
-  });
+  }));
 
   it('should start tutorial if in tutorial mode on page load with' +
     ' permissions', () => {
@@ -412,6 +416,8 @@ describe('Translation tab component', function() {
       result: Promise.reject('exp1')
     } as NgbModalRef);
     enterTranslationForTheFirstTimeEmitter.emit();
+    $scope.$apply();
+    tick();
     $scope.$apply();
     tick();
 

@@ -271,7 +271,6 @@ describe('Translation tab component', function() {
       .returnValue($q.resolve({
         canVoiceover: true
       }));
-    spyOn(contextService, 'getExplorationId');
     spyOn(stateTutorialFirstTimeService, 'initTranslation');
 
     ctrl.$onInit();
@@ -282,6 +281,7 @@ describe('Translation tab component', function() {
     tick();
     $scope.$apply();
 
+    expect(contextService.getExplorationId).toHaveBeenCalled();
     expect($scope.showTranslationTabSubDirectives).toBe(true);
     expect(loaderService.hideLoadingScreen).toHaveBeenCalled();
   }));

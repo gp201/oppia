@@ -116,8 +116,6 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
     componentInstance.onFileChanged(file);
 
     expect(componentInstance.invalidImageWarningIsShown).toBeFalse();
-
-    fixture.detectChanges();
   });
 
   it('should remove invalid tags and attributes', () => {

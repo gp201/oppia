@@ -18,7 +18,7 @@
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ChangeDetectorRef, ElementRef, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { SvgSanitizerService } from 'services/svg-sanitizer.service';
 import { MockTranslatePipe } from 'tests/unit-test-utils';
 import { UploadBlogPostThumbnailComponent } from './upload-blog-post-thumbnail.component';
@@ -161,7 +161,7 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
     expect(componentInstance.cropppedImageDataUrl).toEqual(pictureDataUrl);
   });
 
-  it('should initialize', () => {
+  it('should initialize', fakeAsync(() => {
     const windowResizeSpy = spyOn(
       windowDimensionsService, 'getResizeEvent').and.callThrough();
 
@@ -171,7 +171,7 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
     fixture.detectChanges();
 
     expect(windowResizeSpy).toHaveBeenCalled();
-  });
+  }));
 
   it('should cancel', () => {
     spyOn(componentInstance.cancelThumbnailUpload, 'emit');

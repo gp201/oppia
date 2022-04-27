@@ -101,7 +101,7 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
   it('should reset', () => {
     componentInstance.reset();
 
-    expect(componentInstance.uploadedImage).toBeNull();
+    expect(componentInstance.uploadedImage).toEqual(null);
     expect(componentInstance.cropppedImageDataUrl).toEqual('');
   });
 
@@ -149,12 +149,12 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
   it('should confirm thumbnail picutre', () => {
     let pictureDataUrl = 'picture_data';
     componentInstance.cropper = {
-      getCroppedCanvas(options) {
+      getCroppedCanvas: () => {
         return {
           toDataURL: () => pictureDataUrl
         };
       }
-    };
+    } as Cropper;
 
     componentInstance.save();
 
@@ -179,7 +179,7 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
 
     componentInstance.cancel();
 
-    expect(componentInstance.uploadedImage).toBe(false);
+    expect(componentInstance.uploadedImage).toEqual(null);
     expect(componentInstance.cancelThumbnailUpload.emit).toHaveBeenCalled();
   });
 });

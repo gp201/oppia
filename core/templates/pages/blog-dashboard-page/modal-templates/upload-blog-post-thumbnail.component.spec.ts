@@ -18,7 +18,7 @@
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ChangeDetectorRef, ElementRef, NO_ERRORS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { SvgSanitizerService } from 'services/svg-sanitizer.service';
 import { MockTranslatePipe } from 'tests/unit-test-utils';
 import { UploadBlogPostThumbnailComponent } from './upload-blog-post-thumbnail.component';
@@ -167,6 +167,7 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
 
     componentInstance.ngOnInit();
     expect(componentInstance.windowIsNarrow).toBe(true);
+    tick();
     fixture.detectChanges();
 
     expect(windowResizeSpy).toHaveBeenCalled();

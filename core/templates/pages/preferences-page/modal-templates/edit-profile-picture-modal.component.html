@@ -23,7 +23,7 @@
           <button class="btn btn-secondary oppia-profile-picture-reset-button" (click)="reset()">
             <i class="material-icons oppia-vcenter">&#xE14C;</i>
           </button>
-          <img id="croppable-image" [src]="uploadedImage" #croppableImage>
+          <img [src]="uploadedImage" #croppableImage>
         </div>
         <div *ngIf="invalidTagsAndAttributes.tags.length || invalidTagsAndAttributes.attrs.length"
              class="oppia-unsupported-svg-tag-attribute-error"

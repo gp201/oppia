@@ -16,7 +16,7 @@
           <button class="btn btn-secondary oppia-thumbnail-picture-reset-button" (click)="reset()">
             <i class="material-icons oppia-vcenter">&#xE14C;</i>
           </button>
-          <img id="croppable-image" [src]="uploadedImage" #croppableImage alt="">
+          <img [src]="uploadedImage" #croppableImage alt="">
         </div>
       </div>
       <div *ngIf="invalidTagsAndAttributes.tags.length || invalidTagsAndAttributes.attrs.length"

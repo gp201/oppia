@@ -178,6 +178,7 @@ describe('ExplorationFooterComponent', () => {
 
   it('should not show hints after user finishes practice session' +
   ' and results are loaded.', () => {
+    spyOn(contextService, 'getExplorationId').and.returnValue('exp1');
     spyOn(contextService, 'isInQuestionPlayerMode').and.returnValue(true);
     expect(component.hintsAndSolutionsAreSupported).toBeTrue();
 
@@ -748,6 +749,7 @@ describe('ExplorationFooterComponent', () => {
 
   it('should show hints when initialized in question player when user is' +
   ' going through the practice session and should add subscription.', () => {
+    spyOn(contextService, 'getExplorationId').and.returnValue('exp1');
     spyOn(contextService, 'isInQuestionPlayerMode').and.returnValue(true);
     spyOn(
       questionPlayerStateService.resultsPageIsLoadedEventEmitter, 'subscribe');
@@ -771,6 +773,7 @@ describe('ExplorationFooterComponent', () => {
     component.windowIsNarrow = true;
 
     component.ngOnInit();
+    tick();
     mockResizeEventEmitter.emit();
 
     expect(component.windowIsNarrow).toBeFalse();

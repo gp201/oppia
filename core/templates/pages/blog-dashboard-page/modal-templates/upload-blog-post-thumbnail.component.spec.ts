@@ -121,8 +121,7 @@ describe('Upload Blog Post Thumbnail Modal Component', () => {
     fixture.detectChanges();
   });
 
-  // eslint-disable-next-line oppia/no-test-blockers
-  xit('should remove invalid tags and attributes', () => {
+  it('should remove invalid tags and attributes', () => {
     componentInstance.ngOnInit();
     const svgString = (
       '<svg xmlns="http://www.w3.org/2000/svg" width="1.33ex" height="1.4' +

@@ -761,23 +761,24 @@ describe('ExplorationFooterComponent', () => {
       .toHaveBeenCalled();
   });
 
-  it('should check if window is narrow when user resizes window', () => {
-    spyOn(contextService, 'getExplorationId').and.returnValue('exp1');
-    spyOn(urlService, 'isIframed').and.returnValue(true);
-    spyOn(windowDimensionsService, 'isWindowNarrow').and.returnValue(false);
-    spyOn(windowDimensionsService, 'getResizeEvent').and.returnValue(
-      mockResizeEventEmitter);
-    spyOn(contextService, 'isInQuestionPlayerMode').and.returnValue(false);
-    spyOn(contextService, 'getQuestionPlayerIsManuallySet').and
-      .returnValue(false);
-    component.windowIsNarrow = true;
+  it('should check if window is narrow when user resizes window',
+    fakeAsync(() => {
+      spyOn(contextService, 'getExplorationId').and.returnValue('exp1');
+      spyOn(urlService, 'isIframed').and.returnValue(true);
+      spyOn(windowDimensionsService, 'isWindowNarrow').and.returnValue(false);
+      spyOn(windowDimensionsService, 'getResizeEvent').and.returnValue(
+        mockResizeEventEmitter);
+      spyOn(contextService, 'isInQuestionPlayerMode').and.returnValue(false);
+      spyOn(contextService, 'getQuestionPlayerIsManuallySet').and
+        .returnValue(false);
+      component.windowIsNarrow = true;
 
-    component.ngOnInit();
-    tick();
-    mockResizeEventEmitter.emit();
+      component.ngOnInit();
+      tick();
+      mockResizeEventEmitter.emit();
 
-    expect(component.windowIsNarrow).toBeFalse();
-  });
+      expect(component.windowIsNarrow).toBeFalse();
+    }));
 
   it('should not display author names when exploration is in question' +
   ' player mode', () => {

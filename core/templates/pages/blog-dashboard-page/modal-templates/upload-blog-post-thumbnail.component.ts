@@ -92,6 +92,7 @@ export class UploadBlogPostThumbnailComponent implements OnInit {
         this.uploadedImage = decodeURIComponent(
           (e.target as FileReader).result as string);
       }
+      console.error('detectChanges is called on line 95');
       this.changeDetectorRef.detectChanges();
       this.initializeCropper();
     };

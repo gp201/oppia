@@ -252,6 +252,7 @@ describe('Preview Tab Component', () => {
       tick();
       tick();
       flush();
+      flush();
       flushMicrotasks();
 
       expect(ngbModal.open).toHaveBeenCalled();

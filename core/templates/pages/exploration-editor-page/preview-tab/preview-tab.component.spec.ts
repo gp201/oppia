@@ -251,7 +251,7 @@ describe('Preview Tab Component', () => {
       component.showSetParamsModal(null, () => {});
       tick();
       tick();
-      tick();
+      tick(151);
       flush();
       flush();
       flushMicrotasks();

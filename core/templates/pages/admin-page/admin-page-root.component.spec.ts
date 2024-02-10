@@ -45,6 +45,6 @@ describe('AdminPageRootComponent', () => {
     expect(component.title).toEqual(
       AppConstants.PAGES_REGISTERED_WITH_FRONTEND.ADMIN.TITLE);
     expect(component.meta).toEqual(
-      '?');
+      AppConstants.PAGES_REGISTERED_WITH_FRONTEND.ADMIN.META);
   });
 });
